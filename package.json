@@ -1,14 +1,17 @@
 {
-  "name": "pv-cahya",
+  "name": "uts-mesinkasircahya",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": " set ELECTRON_DISABLE_SECURITY_WARNING=truee && electron ."
+    "start": " electron ."
   },
   "author": "",
   "license": "ISC",
+  "devDependencies": {
+    "electron": "^8.2.3"
+  },
   "dependencies": {
-    "electron": "^8.0.0"
+    "uuid": "^7.0.3"
   }
 }
