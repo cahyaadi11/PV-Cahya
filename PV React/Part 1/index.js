@@ -2,7 +2,7 @@ const electron =require("electron")
 const fs =require("fs")
 const uuid =require("uuid")
 
-const { app, BrowserWindow, ipcMain, Menu } = electron;
+const { app, BrowserWindow, ipcMain, Menu } = electron
 
 let mainWindow
 
