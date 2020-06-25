@@ -1,0 +1,36 @@
+<html>
+
+<head>
+</head>
+
+<body style="background-image: url(blur.jpg);">
+    <h1 style="color: azure;">BIODATA</h1>
+    <p style="color: azure;">Nama : I Made Cahya Adi Putra</p>
+    <p style="color: azure;">Nim      : 1801010030</p>
+    <p style="color: azure;">Prodi    : Sistem Informasi</p>
+   
+</body>
+
+    <script>
+        const electron = require("electron");
+        const {
+            ipcRenderer
+        } = electron;
+
+        const form = document.getElementById("form");
+        const elements = {};
+
+        form.addEventListener("submit", event => {
+            event.preventDefault();
+
+            for (let i = 0; i < form.elements.length; i++) {
+                if (form.elements[i].type !== "submit")
+                    elements[form.elements[i].name] = form.elements[i].value;
+            }
+
+            ipcRenderer.send("appointment:create", elements);
+        });
+    </script>
+
+
+</html>

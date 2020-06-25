@@ -1,0 +1,54 @@
+<html>
+
+<head>
+</head>
+
+<body style="background-image: url(logo.png);">
+    <h1>Data Customer</h1>
+    <div id="list"></div>
+</body>
+
+<script>
+        const electron = require("electron");
+        const {ipcRenderer} = electron;
+        ipcRenderer.send("kasir:request:list");
+
+        ipcRenderer.on('kasir:response:list', (event, kasir) => {
+        const listDiv = document.getElementById("list");
+        kasir.forEach(kasir => {
+        const kasirDiv =document.createElement("div");
+
+        const nameParagraph = document.createElement("p");
+        nameParagraph.innerHTML = `Name: ${kasir.name}`;
+
+        const numberParagraph = document.createElement("p")
+        numberParagraph.innerHTML = `Phone Number: ${kasir.number}`;
+
+        const dateParagraph = document.createElement("p")
+        dateParagraph.innerHTML = `Date: ${kasir.date}`;
+
+        const statusParagraph = document.createElement("p")
+        statusParagraph.innerHTML = `kelamin: ${kasir.status}`;
+        
+        const alamatParagraph = document.createElement("p")
+        alamatParagraph.innerHTML = `Alamat: ${kasir.alamat}`;
+
+        const doneParagraph = document.createElement("p")
+        doneParagraph.innerHTML = `Done: ${kasir.done ? "Yes" : "No"}`;
+        
+        const hr = document.createElement("hr");
+
+        kasirDiv.appendChild(nameParagraph);
+        kasirDiv.appendChild(numberParagraph);
+        kasirDiv.appendChild(dateParagraph);
+        kasirDiv.appendChild(statusParagraph);
+        kasirDiv.appendChild(alamatParagraph);
+        kasirDiv.appendChild(doneParagraph);
+        kasirDiv.appendChild(hr);
+
+        listDiv.append(kasirDiv);
+
+        });
+    });
+</script>
+</html>
